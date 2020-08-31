@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jq.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .shutter{
+            width: 800px;
+            height: 300px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .shutter ul{
+            list-style: none;
+        }
+        .shutter ul li{
+            position: absolute;
+            top: 0;
+        }
+        .shutter ul li.no0{left: 0;}
+        .shutter ul li.no1{left: 160px;}
+        .shutter ul li.no2{left: 320px;}
+        .shutter ul li.no3{left: 480px;}
+        .shutter ul li.no4{left: 640px;}
+    </style>
+</head>
+<body>
+    <div class="shutter">
+        <ul>
+            <li class="no0">
+                <a href="">
+                    <img src="./img/05.jpg" alt="">
+                </a>
+            </li>
+            <li class="no1">
+                <a href="">
+                    <img src="./img/01.jpg" alt="">
+                </a>
+            </li>
+            <li class="no2">
+                <a href="">
+                    <img src="./img/02.jpg" alt="">
+                </a>
+            </li>
+            <li class="no3">
+                <a href="">
+                    <img src="./img/03.jpg" alt="">
+                </a>
+            </li>
+            <li class="no4">
+                <a href="">
+                    <img src="./img/04.jpg" alt="">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        /*   0 160 320 480 640
+        左边：0 60 120 180 240
+        右边：n 560 620 680 740*/ 
+        $(".no0").mouseenter(function(){
+            $("li").stop(true);
+            $(".no1").animate({"left":560},1000)
+            $(".no2").animate({"left":620},1000)
+            $(".no3").animate({"left":680},1000)
+            $(".no4").animate({"left":740},1000)
+        })
+    </script>
+</body>
+</html>

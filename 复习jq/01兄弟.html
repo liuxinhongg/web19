@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jq.min.js"></script>
+    <style>
+        div{
+            width: 80%;
+            overflow: hidden;
+        }
+        div p{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            margin: 10px;
+            float: left;
+            border-radius: 50%;
+        }
+        /* .active{
+            background-color: red;
+        } */
+    </style>
+</head>
+<body>
+    <div>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+    </div>
+    <h1> <font color="red">我是span标签</font></h1>
+    <script>
+        $(function(){
+            
+        })
+        $("p").mouseenter(function(){
+            // $(this).addClass("active").siblings().removeClass("active")
+            $(this).css("background-color","red").siblings().css("background-color","yellowgreen")
+        })
+        console.log($("h1").text())
+        console.log($("h1").html())
+    </script>
+</body>
+</html>

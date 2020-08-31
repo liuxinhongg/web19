@@ -1,29 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>今天是星期一</h1>
-    <h1>今天是星期一</h1>
-    <h1>今天是星期一</h1>
-    <h1>今天是星期一</h1>
-    <h1>今天是星期一</h1>
-    <h1>今天是星期一</h1>
-    <h1>今天是星期一</h1>
-    <h1>今天是星期一</h1>
-    <h1>今天是星期一</h1>
-    <h1>今天是星期一</h1>
-    <h1>今天是星期一</h1>
-    <h1>今天是星期一</h1>
-    <h1>今天是星期一</h1>
-    <h1>今天是星期一</h1>
-    <h1>今天是星期一</h1>
-    <h1>今天是星期一</h1>
-    <h1>今天是星期一</h1>
-    <h1>今天是星期一</h1>
-    <h1>今天是星期一</h1>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="./js/jq.min.js"></script>
+        <style>
+            .box{
+                width: 200px;
+                height: 100px;
+               background-color: red;
+               position: absolute;
+               left: 100px;
+               top: 100px;
+                 /*margin: auto; */
+            }
+        </style>
+    </head>
+    <input type="button" value="stop()"/>
+    <input type="button" value="stop(true)"/>
+    <input type="button" value="stop(true,true)"/>
+    <input type="button" value="stop(false,true)"/>
+    <input type="button" value="finish()"/>
+    <div class="box"></div>
+    <script>
+        // var w=$(".box").width();
+        // console.log(w);
+       /* var jos={
+            'width': '200px',
+            'height': '200px',
+            'background-color': 'red',
+            'margin': 'auto'
+        }
+        $(".box").css(jos)*/
+        // $(".box").eq(2).css("background-color","green")
+        // $(".box:eq(2)").css("background-color","green")
+        // $(".box:odd").css("background-color","gold")
+        // $(".box:even").css("background-color","green")
+        /*$(".box").animate({"left":600},2000)
+        $(".box").animate({"top":300},2000)
+        $(".box").animate({"left":100},2000)
+        $(".box").animate({"top":100},2000)*/
+        /*$(".box").animate({"left":800},2000).animate({"top":300},2000).animate({"left":100},2000).animate({"top":100},2000);
+        $("input:eq(0)").click(function(){
+            $(".box").stop()
+        })
+        $("input:eq(1)").click(function(){
+            $(".box").stop(true)
+        })
+        $("input:eq(2)").click(function(){
+            $(".box").stop(true,true)
+        })
+        $("input:eq(3)").click(function(){
+            $(".box").stop(false,true)
+        })
+        $("input:eq(4)").click(function(){
+            $(".box").finish()
+        })*/
+        
+    </script>
+    <body>
+    </body>
 </html>
