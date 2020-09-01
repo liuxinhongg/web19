@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//第一步 创建xhr对象
+			var xhr=new XMLHttpRequest();
+			// console.log(xhr);
+			//第二步 准备就绪
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState===4){
+					console.log(xhr.responseText);
+				}
+			}
+			//第3步创建一个请求，第一个参数是请求的类型get或者post，第二个参数就是请求的路径，第三个参数叫做是否使用异步机制
+			xhr.open("GET","test.json",true);
+			// 第4步发送请求
+			xhr.send(null);
+			console.log("哈哈啊哈哈");
+			console.log("嘻嘻嘻");
+			console.log("呵呵呵呵");
+		</script>
+	</body>
+</html>

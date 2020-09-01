@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="点击" id="btn"/>
+		<h1 id="oh"></h1>
+		<script type="text/javascript">
+			var oh=document.getElementById("oh");
+			var btn=document.getElementById("btn");
+			btn.onclick=function(){
+				var xhr=new XMLHttpRequest();
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState===4){
+						if(xhr.status>=200&&xhr.status<300||xhr.status===304){
+							oh.innerHTML=xhr.responseText;//string
+						}else{
+							oh.innerHTML= "服务器错误，请稍后重试";
+						}
+					}
+				}
+				xhr.open("GET",'test.json',true);
+				xhr.send(null);
+			}
+		</script>
+	</body>
+</html>
