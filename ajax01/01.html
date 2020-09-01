@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<table border="1" cellspacing="0" cellpadding="40" align="center" id="tab">
+		</table>
+		<script type="text/javascript">
+			//第一步 创建xhr对象
+			var xhr=new XMLHttpRequest();
+			// console.log(xhr);
+			//第二步 准备就绪
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState===4){
+					// console.log(typeof xhr.responseText);
+					// JSON.parse()把string-->JSON
+					var response=JSON.parse(xhr.responseText)
+					// JSON.stringify()把json-->String
+					console.log(response);
+					var tb=document.getElementById("tab");
+					var str='<tr bgcolor="#9ACD32"> <th>姓名</th> <th>年龄</th> <th>爱好</th></tr>';
+					for (var i=0;i<response.userinfo.length;i++) {
+						 str+='<tr><td>'
+								+response.userinfo[i].username+
+							'</td><td>'
+								+response.userinfo[i].age+
+							'</td><td>'
+								+response.userinfo[i].hobby+
+							'</td></tr>'
+					}
+					tb.innerHTML=str
+				}
+			}
+			//第3步创建一个请求，第一个参数是请求的类型get或者post，第二个参数就是请求的路径，第三个参数叫做是否使用异步机制
+			xhr.open("GET","test.json",true);
+			// 第4步发送请求
+			xhr.send(null)
+		</script>
+	</body>
+</html>

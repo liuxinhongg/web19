@@ -1,0 +1,29 @@
+{
+	"userinfo":[
+		{
+			"username":"王成",
+			"age":18,
+			"hobby":"playing"
+		},
+		{
+			"username":"史武博",
+			"age":19,
+			"hobby":"playing，swimming"
+		},
+		{
+			"username":"朱依依",
+			"age":18,
+			"hobby":"painting，dancing"
+		},
+		{
+			"username":"张雨柔",
+			"age":18,
+			"hobby":"singing,playing"
+		},
+		{
+			"username":"徐剑",
+			"age":18,
+			"hobby":"singing,playing"
+		}
+	]
+}
