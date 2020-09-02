@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			table,tr,td{
+				border: 1px solid #000;
+				border-collapse: collapse;
+			}
+		</style>
+	</head>
+	<body>
+		<table id="table">
+			<tr>
+				<th>学号</th>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>性别</th>
+			</tr>
+		</table>
+		<script type="text/template" id="template">
+			<tr>
+				<td>%xuehao%</td>
+				<td>%xingming%</td>
+				<td>%nianling%</td>
+				<td>%xingbie%</td>
+			</tr>
+		</script>
+		<script src="js/ajax.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function compile(templateString,dictionary){
+				return templateString.replace(/\%([a-z]+)\%/g,function(match,$1,index,string){
+					return dictionary[$1]
+				})
+			}
+			var table=document.getElementById("table");
+			var templateString=document.getElementById("template").innerHTML;
+			$.ajax({
+				url:"js/student.json",
+				success:function(res){
+					var obj=JSON.parse(res);
+					for (var i=0;i<obj.result.length;i++) {
+						var dict=obj.result[i];
+						// 数据绑定
+						var DomString=compile(templateString,dict);
+						console.log(DomString)
+						table.innerHTML+=DomString
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

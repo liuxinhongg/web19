@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="js/jq.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// demo1
+			/* var str="今天是星期%ji%,我们公司%fangjia%,我们一起去%wan%.";
+			var data={
+				"ji":"三",
+				"fangjia":"放假",
+				"wan":"玩"
+			}
+			str=str.replace(/\%([a-z]+)\%/g,function(match,$1,index,string){
+				console.log("match",match);
+				console.log("$1",$1);
+				console.log("index",index);
+				console.log("string",string);
+				return data[$1]
+			})
+			console.log(str); */
+			// demo2 each 方法 遍历 迭代器
+			/* var arr1=["aaa","bbb","ccc"];
+			$.each(arr1,function(i,val){
+				// console.log("i",i);
+				// console.log("val",val);
+			})
+			console.log(i);//报错
+			console.log(val); //报错 */
+			// demo3
+			var str=["东风","西风","幺鸡"];
+			/* $.each(str,function(item){
+				console.log(item)
+			}) */
+			function each(array,fn){
+				for(var i=0;i<str.length;i++){
+					fn(array[i])
+				}
+			}
+			each(str,function(item){
+				console.log(item)
+			})
+		</script>
+	</body>
+</html>

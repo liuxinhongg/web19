@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str="昨天的天气%tianqi%,因为天气原因，导致我%yiyu%";
+			var divt={
+				"tianqi":"暴雨",
+				"yiyu":"抑郁"
+			}
+			function compile(templateString,dictionary){
+				return templateString.replace(/\%([a-z]+)\%/g,function(match,$1,index,string){
+					return dictionary[$1]
+				})
+			}
+			str=compile(str,divt);
+			console.log(str);
+		</script>
+	</body>
+</html>
