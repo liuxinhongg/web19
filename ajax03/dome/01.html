@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+		<style type="text/css">
+			.box{
+				margin-top: 100px;
+			}
+			.rename{
+				border: 1px solid #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container box">
+			<div class="row item">
+				<!-- <div class="col-md-3">
+					<img src="../../复习jq/img/01.jpg" width="100%">
+					<h3></h3>
+				</div> -->
+			</div>
+		</div>
+		<script src="../js/jq.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$.ajax({
+				url:"http://127.0.0.1/w/website/findGoodsTypeList",
+				// url:"https://www.wumeili.top/w/website/findGoodsTypeList",
+				type:"get",
+				data:{},
+				success:function(res){
+					console.log(res);
+					for (var i=0;i<res.data.length;i++) {
+						$(".item").append(
+							// '<div class="col-md-3 col-sm-4 col-xs-6 rename"><img src="'
+							// +res.data[i].icon+
+							// '"width="100%"><h3>'
+							// +res.data[i].name+
+							// '</h3></div>'
+							`<div class="col-md-3 col-sm-4 col-xs-6 rename">
+								<img src="${res.data[i].icon}" width="100%">
+								<h3> <a href="search.html?aa=${res.data[i].name}"> ${res.data[i].name}</a></h3>
+							</div>`
+						)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

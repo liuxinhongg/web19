@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: #ccc;
+		}
+		.content{
+			background-color: white;
+			width: 1100px;
+			margin: 0 auto;
+			font-size: 12px;
+			padding: 20px;
+		}
+		.content .jobtable{
+			position: relative;
+		}
+		.content .row{
+			overflow: hidden;
+			line-height: 40px;
+			position: relative;
+		}
+		.content .hd{
+			font-weight: bold;
+		}
+		.content .row .cols{
+			overflow: hidden;
+			position: relative;
+			border-bottom: 1px solid #ccc;
+		}
+		.content .row .col{
+			float: left;
+		}
+		.content .row .col1{
+			width: 30%;
+		}
+		.content .row .col2{
+			width: 15%;
+		}
+		.content .row .col3{
+			width: 20%;
+		}
+		.content .row .col4{
+			width: 20%;
+		}
+		.content .row .col3{
+			width: 15%;
+		}
+		.content .info{
+			overflow: hidden;
+			font-size: 16px;
+			line-height: 32px;
+		}
+		.content .info h3{
+			float: left;
+		}
+		.content .info p{
+			float: right;
+		}
+		.content .row_btn{
+			position: absolute;
+			width: 21px;
+			height: 10px;
+			background-color: red;
+			right: 10px;
+			top: 50%;
+			margin-top: -5px;
+			background: url(images/banner-icon.png)  -28px -146px;
+			cursor: pointer;
+		}
+		 .row_btn.up{
+			background-position: -2px -145px;
+		}
+		 .detail{
+			display: none;
+			border-bottom: 1px solid #ccc;
+		}
+		.pageNav{
+			margin-top: 10px;
+			width: 259px;
+			margin: 20px auto;
+		}
+		.pageNav ul{
+			list-style: none;
+			overflow: hidden;
+		}
+		.pageNav ul li{
+			float: left;
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			margin-right: 5px;
+			cursor: pointer;
+			border: 1px solid #ccc;
+			background: orange;
+		}
+		.pageNav ul li.cur{
+			background-color: yellowgreen;
+		}
+		.mask{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			/* background:url(images/busy.gif) no-repeat center center; */
+			z-index: 999;
+		}
+		</style>
+	</head>
+	<body>
+        <p>深刻的回复</p>
+		<div class="content">
+			<!-- <div class="row">
+				<div class="cols">
+					<div class="col col1"><a href='javascript:;'>自动驾驶事业部_仿真器前端工程师</a></div>
+					<div class="col col2">社招-T技术-标准</div>
+					<div class="col col3">北京市</div>
+					<div class="col col4">若干</div>
+					<div class="col col5">2016-05-04</div>
+					<div class="row_btn"></div>
+				</div>
+				<div class="detail">
+					<div className="serviceCondition">
+						<h5>入职资格： </h5>
+						入职资格入职资格入职资格入职资格入职资格入职资格入职资格
+						入职资格入职资格入职资格入职资格入职资格入职资格入职资格
+						入职资格入职资格入职资格入职资格入职资格入职资格入职资格
+						入职资格入职资格入职资格入职资格入职资格入职资格入职资格
+						</div> 
+					<div className="workContent">
+						<h5>工作内容： </h5>
+						工作内容工作内容工作内容工作内容工作内容工作内容工作内容
+						工作内容工作内容工作内容工作内容工作内容工作内容工作内容
+						工作内容工作内容工作内容工作内容工作内容工作内容工作内容
+						工作内容工作内容工作内容工作内容工作内容工作内容工作内容
+						工作内容工作内容工作内容工作内容工作内容工作内容工作内容
+					</div>
+				</div>
+			</div> -->
+		</div>
+		<div class="pageNav">
+			<ul>
+				<li class="cur"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<script src="../js/jq.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+            var pageNum=1;
+            var maxPage=9;
+            showData();
+            clickPaging()
+            function showData(){
+                $.get("../js/JSON/getPostList"+pageNum,function(res){
+                    var obj=JSON.parse(res);
+                    // console.log(obj);
+                    var str="";
+                    for(var i=0;i<obj.postList.length;i++){
+                        var item=obj.postList[i];
+                        str+=`<div class="row">
+                                <div class="cols">
+                                    <div class="col col1"><a href='javascript:;'>${item.name}</a></div>
+                                    <div class="col col2">${item.postType}</div>
+                                    <div class="col col3">${item.workPlace}</div>
+                                    <div class="col col4">${item.recruitNum}</div>
+                                    <div class="col col5">${item.publishDate}</div>
+                                    <div class="row_btn"></div>
+                                </div>
+                                <div class="detail">
+                                    <div className="serviceCondition">
+                                        <h5>入职资格： </h5>
+                                        ${item.serviceCondition}
+                                        </div> 
+                                    <div className="workContent">
+                                        <h5>工作内容： </h5>
+                                        ${item.workContent}
+                                    </div>
+                                </div>
+                            </div>`
+                    }
+                    $(".content").html(str);
+                    $(".row").click(function(){
+                        $(this).children(".detail").stop(true).slideToggle()
+                    })
+                })
+            }
+            function clickPaging(){
+                if(pageNum>=1&&pageNum<=3){
+                    $(".pageNav ul li").eq(0).html("1");
+                    $(".pageNav ul li").eq(1).html("2");
+                    $(".pageNav ul li").eq(2).html("3");
+                    $(".pageNav ul li").eq(3).html("4");
+                    $(".pageNav ul li").eq(4).html("……");
+                    $(".pageNav ul li").eq(5).html(maxPage-1);
+                    $(".pageNav ul li").eq(6).html(maxPage);
+                    $(".pageNav ul li").eq(pageNum-1).addClass("cur").siblings().removeClass("cur");
+                }else if(pageNum<=maxPage&&pageNum>=maxPage-2){
+                    $(".pageNav ul li").eq(0).html("1");
+                    $(".pageNav ul li").eq(1).html("2");
+                    $(".pageNav ul li").eq(2).html("……");
+                    $(".pageNav ul li").eq(3).html(maxPage-3);
+                    $(".pageNav ul li").eq(4).html(maxPage-2);
+                    $(".pageNav ul li").eq(5).html(maxPage-1);
+                    $(".pageNav ul li").eq(6).html(maxPage);
+                    $(".pageNav ul li").eq(pageNum-maxPage-1).addClass("cur").siblings().removeClass("cur");
+                }else{
+                    $(".pageNav ul li").eq(0).html("1");
+                    $(".pageNav ul li").eq(1).html("……");
+                    $(".pageNav ul li").eq(2).html(pageNum-1);
+                    $(".pageNav ul li").eq(3).html(pageNum);
+                    $(".pageNav ul li").eq(4).html(pageNum+1);
+                    $(".pageNav ul li").eq(5).html("……");
+                    $(".pageNav ul li").eq(6).html(maxPage);
+                    $(".pageNav ul li").eq(3).addClass("cur").siblings().removeClass("cur");
+                }
+            }
+            // 监听分页
+            bindEvent()
+            function bindEvent(){
+                $(".pageNav ul li").click(function(event){
+                    //写...的那个小格子不能点击
+                    if($(this).html()=="……"){
+                        return;
+                    }
+                    // 改变页数
+                    pageNum= parseInt($(this).html());
+                    showData();
+                    clickPaging()
+                    // hash     #
+                    // history 无#
+                    window.location.hash=pageNum
+                })
+            }
+            // $("p").click(function(){
+            //     location.href="01.html?name=zhangsan"
+            // })
+        </script>
+	</body>
+</html>
