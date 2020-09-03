@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			jsonp("js/jsonp.txt","fun",function(res){
+				console.log(res)
+			})
+			function jsonp(URL,callbackname,callback){
+				window[callbackname]=callback;
+				// 添加节点
+				var scriptObj=document.createElement("script");
+				scriptObj.src=URL;
+				document.body.appendChild(scriptObj);
+				document.body.removeChild(scriptObj)
+			}
+		</script>
+	</body>
+</html>

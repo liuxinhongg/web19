@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// demo1  <%= %>模板字符串
+			/* var templateString = "好<%= xinqing %>啊，今天我买了<%= dongxi%>，花了<%=qian%>元";
+			var complie=_.template(templateString);
+			var data={
+				"xinqing":"心情",
+				"dongxi":"东西",
+				"qian":"100"
+			}
+			console.log(complie(data)) */
+			//demo2 shuffle() list 副本
+			/* var str=[1,2,3,4,5,6,7,8,9];
+			var str1=_.shuffle(str);
+			console.log(str1) */
+			 //demo3 sample函数，从 list中产生一个随机样本，第二个参数6表示产生6个
+			/* var str=[12,3,4,22,44,32,1,6,7,33];
+			 var str1=_.sample(str,10);
+			 console.log(str1); */
+			 // demo4 
+			/* var arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+			 var res = [];
+			 for (var i=0;i<10;i++) {
+			 	while(true){
+					var ra=parseInt(Math.random()*20);
+					if(res.indexOf(arr[ra])==-1){
+						break;
+					}
+				}
+				res.push(arr[ra])
+			 }
+			 console.log(res); */
+			 // demo5
+			 /* var arr = ["东风","幺鸡","八万","一饼"];
+			var result= _.each(arr,function(item){
+				 // return;
+				 console.log(item)
+			 })
+			 // console.log(result); */
+			 //demo6 filter()
+			/* var arr = [
+			 	{"xingming":"小明","age":12,"sex":"男"},
+			 	{"xingming":"小红","age":18,"sex":"女"},
+			 	{"xingming":"小绿","age":2,"sex":"女"},
+			 	{"xingming":"小刚","age":2,"sex":"男"},
+			 	{"xingming":"小灰","age":12,"sex":"男"}
+			 ];
+			 var result=_.filter(arr,function(item){
+				 return item.age > 10;
+			 })
+			 console.log(result); */
+			 // demo7 contains方法 检测数组中是否包含某项
+			/* var arr = ["东风","幺鸡","八万","一饼"];
+			 var result=_.contains(arr,"一筒");
+			 console.log(result);//true */
+			 // demo8 最大值max、最小值min：
+			/* var arr=[12,23,55,3,78,2,66];
+			 console.log(_.max(arr));
+			 console.log(_.min(arr));
+			 var arr = [
+				{"xingming":"小明","age":12,"sex":"男"},
+				{"xingming":"小红","age":18,"sex":"女"},
+				{"xingming":"小绿","age":2,"sex":"女"},
+				{"xingming":"小刚","age":2,"sex":"男"},
+				{"xingming":"小灰","age":12,"sex":"男"}
+			];
+			var result=_.min(arr,function(item){
+				return item.age
+			})
+			// console.log(result)
+			var sortResult=_.sortBy(arr,function(item){
+				return item.age
+			})
+			console.log(sortResult) */
+			// demo9 size()
+			/* var obj = {"a":undefined,"b":undefined,"c":undefined};
+			console.log(_.size(obj)); */
+			//demo 10  without() 删除指定项
+			/* var arr = ["东风","幺鸡","八万","一饼"];
+			arr=_.without(arr,"幺鸡");
+			// console.log(arr);
+			// 合并数组并且去重
+			var arr = _.union([1,2,3],[2,3,4],[4,5,6]);
+			console.log(arr); */
+			// 寻找指定项
+			/* var arr = ["东风","幺鸡","八万","一饼"];
+			console.log(_.indexOf(arr,"八万")); */
+			var arr1 = ["东风","幺鸡","八万","一饼"];
+			var arr2 = ["东风","幺鸡","八万","一饼"];
+			console.log(arr1 == arr2);
+			console.log(_.isEqual(arr1,arr2));
+		</script>
+	</body>
+</html>

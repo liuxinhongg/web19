@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/jq.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.box{
+				width: 1200px;
+				height: 500px;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*$.ajax({
+				url:"http://route.showapi.com/1211-1",
+				type:"get",
+				data:{
+					showapi_appid:'46452',
+					count:10,
+					showapi_sign:'c3bc2247155b4219bffb60cac4fd315c'
+				},
+				// dataType:"jsonp",
+				success:function(res){
+					console.log(res);
+				}
+			}) */ 
+			$.ajax({
+				url:"http://192.168.1.107:3000/material/totleplan/search",
+				type:"get",
+				dataType:"jsonp",
+				success:function(res){
+					console.log(res);
+				}
+			})
+			// $.get("js/student.json",{},function(res){
+			// 	console.log(res);
+			// })
+			/* jsonp
+			nginx代理
+			vue 反向代理
+			iframe */
+		</script>
+	</body>
+</html>

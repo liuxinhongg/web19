@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		<input type="button" name="" id="btn" value="获取数据" />
+		<script type="text/javascript">
+			function fun(res){
+				console.log(res)
+			}
+			var btn=document.getElementById("btn");
+			btn.onclick=function(){
+				// 创建一个script标签 孤儿节点
+				var scriptObj=document.createElement("script");
+				document.body.appendChild(scriptObj);//添加script节点
+				scriptObj.src="js/jsonp.txt";
+			}
+		</script>
+	</body>
+</html>
