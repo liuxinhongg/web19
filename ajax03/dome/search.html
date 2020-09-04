@@ -3,28 +3,85 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+		<style type="text/css">
+			.desc{
+				width: 100%;
+				height: 25px;
+				line-height: 25px;
+				display: flex;
+				justify-content: space-between;
+			}
+			.desc a{
+				font-size: 12px;
+			}
+			.op{
+				width: 300px;
+				height: 40px;
+				margin: 50px auto;
+			}
+		</style>
 	</head>
 	<body>
-		我是商品分类查询
+		<!-- 我是商品分类查询 -->
+		<p class="op">
+			<input type="text" value="" id="shop"/>
+			<input type="button" id="btn" value="搜索"/>
+		</p>
+		<div class="container">
+			<div class="row item">
+				
+			</div>
+		</div>
 		<script src="../js/jq.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
+		console.log(document.cookie.split("=")[1])
 			// console.log(location.search)
 			/* 汉字转码:encodeURIComponent()
 			码转汉字:decodeURI() */
 			var str=location.search;
 			str=decodeURI(str.split("=")[1]);
 			console.log(str)
-			$.ajax({
-				url:"http://127.0.0.1/w/website/findGoodsList",
-				type:"get",
-				data:{
-					info:str,
-					pageNo:1
-				},
-				success:function(res){
-					console.log(res)
+			if(str=="undefined"){
+				$(".item").html("暂无数据")
+			}else{
+				getdata()
+			}
+			$("#btn").click(function(){
+				str=$("#shop").val();
+				console.log(str);
+				if(str){
+					getdata()
 				}
 			})
+			function getdata(){
+				$.ajax({
+					url:"http://127.0.0.1/w/website/findGoodsList",
+					type:"get",
+					data:{
+						info:str,
+						pageNo:1
+					},
+					success:function(res){
+						console.log(res)
+						var aa="";
+						var datalist=res.data.tbk_dg_material_optional_response.result_list.map_data;
+						for (var i=0;i<datalist.length;i++) {
+							var item=datalist[i];
+							aa+=`<div class="col-md-3">
+										<img src="${item.pict_url}" width="100%">
+										<h4>${item.category_name}</h4>
+										<p>${item.coupon_info}</p>
+										<div class="desc">
+											<a href="${item.coupon_share_url}">领取优惠卷</a>
+											<a href="${item.url}">详情</a>
+										</div>
+									</div>`
+						}
+							$(".item").html(aa)
+					}
+				})
+			}
 		</script>
 	</body>
 </html>
