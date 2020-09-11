@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+		<style type="text/css">
+			.desc{
+				width: 100%;
+				height: 25px;
+				line-height: 25px;
+				display: flex;
+				justify-content: space-between;
+			}
+			.desc a{
+				font-size: 12px;
+			}
+			.op{
+				width: 300px;
+				height: 40px;
+				margin: 50px auto;
+			}
+			.pageNav{
+				margin-top: 10px;
+				width: 259px;
+				margin: 20px auto;
+			}
+			.pageNav ul{
+				width: 600px;
+				list-style: none;
+				overflow: hidden;
+			}
+			.pageNav ul li{
+				float: left;
+				width: 30px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				margin-right: 5px;
+				cursor: pointer;
+				border: 1px solid #ccc;
+				background: orange;
+			}
+			.pageNav ul li.cur{
+				background-color: yellowgreen;
+			}
+			.topnav {
+				width: 200px;
+				margin: 20px auto;
+				display: flex;
+				justify-content: flex-start;
+			}
+			.topnav span{
+				width: 50px;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				padding: 3px 5px;
+				margin-right: 10px;
+				background: #cccc;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 我是商品分类查询 -->
+		
+		
+		<p class="op">
+			<input type="text" value="" id="shop"/>
+			<input type="button" id="btn" value="搜索"/>
+		</p>
+		<div class="topnav">
+			<span>9.9</span>
+			<span>19.9</span>
+			<span>特价</span>
+		</div>
+		<div class="container">
+			<div class="row item">
+				
+			</div>
+		</div>
+		<div class="pageNav">
+			<ul>
+				<li class="cur"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<script src="../js/jq.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var pageNum=1
+			var maxPage=9;
+			// console.log(document.cookie.split("=")[1])
+			// console.log(location.search)
+			/* 汉字转码:encodeURIComponent()
+			码转汉字:decodeURI() */
+			var str=location.search;
+			str=decodeURI(str.split("=")[1]);
+			console.log(str)
+			if(str=="undefined"){
+				$(".item").html("暂无数据");
+			}else{
+				getdata(str)		
+			}
+			$("#btn").click(function(){
+				str=$("#shop").val();
+				console.log(str);
+				if(str){
+					getdata(str)
+				}
+			})
+			// 选项导航内容
+			$(".topnav span").click(function(){
+				$(this).css({background:"red"}).siblings().css({background:"#ccc"})
+				str=$(this).html()
+				getdata(str)
+			})
+			function getdata(name,page=1){
+				$.ajax({
+					url:"http://127.0.0.1/w/website/findGoodsList",
+					type:"get",
+					data:{
+						info:name,
+						pageNo:page
+					},
+					success:function(res){
+						console.log(res)
+						var aa="";
+						maxPage=res.data.tbk_dg_material_optional_response.total_results
+						var datalist=res.data.tbk_dg_material_optional_response.result_list.map_data;
+						for (var i=0;i<datalist.length;i++) {
+							var item=datalist[i];
+							aa+=`<div class="col-md-3">
+										<img src="${item.pict_url}" width="100%">
+										<h4>${item.category_name}</h4>
+										<p>${item.coupon_info}</p>
+										<div class="desc">
+											<a href="${item.coupon_share_url}">领取优惠卷</a>
+											<a href="detail.html?id=${item.item_id}">详情</a>
+										</div>
+									</div>`
+						}
+							$(".item").html(aa)
+					}
+				})
+			}
+			// 分页布局
+			clickPaging()
+			function clickPaging(){
+			    if(pageNum>=1&&pageNum<=3){
+			        $(".pageNav ul li").eq(0).html("1");
+			        $(".pageNav ul li").eq(1).html("2");
+			        $(".pageNav ul li").eq(2).html("3");
+			        $(".pageNav ul li").eq(3).html("4");
+			        $(".pageNav ul li").eq(4).html("……");
+			        $(".pageNav ul li").eq(5).html(maxPage-1);
+			        $(".pageNav ul li").eq(6).html(maxPage);
+			        $(".pageNav ul li").eq(pageNum-1).addClass("cur").siblings().removeClass("cur");
+			    }else if(pageNum<=maxPage&&pageNum>=maxPage-2){
+			        $(".pageNav ul li").eq(0).html("1");
+			        $(".pageNav ul li").eq(1).html("2");
+			        $(".pageNav ul li").eq(2).html("……");
+			        $(".pageNav ul li").eq(3).html(maxPage-3);
+			        $(".pageNav ul li").eq(4).html(maxPage-2);
+			        $(".pageNav ul li").eq(5).html(maxPage-1);
+			        $(".pageNav ul li").eq(6).html(maxPage);
+			        $(".pageNav ul li").eq(pageNum-maxPage-1).addClass("cur").siblings().removeClass("cur");
+			    }else{
+			        $(".pageNav ul li").eq(0).html("1");
+			        $(".pageNav ul li").eq(1).html("……");
+			        $(".pageNav ul li").eq(2).html(pageNum-1);
+			        $(".pageNav ul li").eq(3).html(pageNum);
+			        $(".pageNav ul li").eq(4).html(pageNum+1);
+			        $(".pageNav ul li").eq(5).html("……");
+			        $(".pageNav ul li").eq(6).html(maxPage);
+			        $(".pageNav ul li").eq(3).addClass("cur").siblings().removeClass("cur");
+			    }
+			}
+			bindEvent()
+			function bindEvent(){
+			    $(".pageNav ul li").click(function(event){
+			        //写...的那个小格子不能点击
+			        if($(this).html()=="……"){
+			            return;
+			        }
+			        // 改变页数
+			        pageNum= parseInt($(this).html());
+					console.log(pageNum)
+			        getdata(str,pageNum);
+			        clickPaging()
+			        // hash     #
+			        // history 无#
+			        // window.location.hash=pageNum
+			    })
+			}
+		</script>
+	</body>
+</html>

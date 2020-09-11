@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" >
+		<title></title>
+	</head>
+	<body>
+		<span class="glyphicon glyphicon-asterisk" style="font-size: 30px; color: red;"></span>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+		<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script type="text/javascript">
+			//cookie 存入和获取方法一样document.cookie() 一般是变量，尽可能不要存对象
+			var name="zhangsan";
+			document.cookie="user="+name;
+			console.log(document.cookie);
+			// localStorage 和 sessionStorage
+			// 存入数据
+			var hobby="playing";
+			var hello=[
+				{
+					name:"张三",
+					age:18,
+					hobby:"playing",
+				},
+				{
+					name:"张三",
+					age:18,
+					hobby:"playing",
+				},
+				{
+					name:"张三",
+					age:18,
+					hobby:"playing",
+				}
+			]
+			// localStorage.setItem("ah",JSON.stringify(hello));
+			sessionStorage.setItem("sess",JSON.stringify(hello));
+			var sessL=sessionStorage.getItem("sess");
+			console.log(sessL)
+		</script>
+	</body>
+</html>

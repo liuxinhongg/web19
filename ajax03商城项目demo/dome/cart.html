@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.guc1{
+				width: 850px;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <input type="checkbox" name="" id="" value="" checked="checked"/> -->
+		<div class="guc1 bx">
+		    <div class="div1">
+		        <div class="huafen">
+		            <p> <i><img src="./img/购物车-结算_03.jpg" alt=""></i>购物车</p>
+		        </div>
+		       <div class="bg1">
+		            <table cellspacing="0">
+		                <tr class="tr1">
+		                    <th width="33" height="50"><input class="checkall" type="checkbox" name="sex"></th>
+		                    <th width="105" height="50">全选</th>
+		                    <th width="284" height="50">商品信息</th>
+		                    <th width="125" height="50">单价（元）</th>
+		                    <th width="125" height="50">数量 </th>
+		                    <th width="125" height="50">总金额</th>
+		                    <th width="125" height="50">操作</th>
+		                </tr>
+		            </table>
+		        </div>
+		        <div class="d1">
+		            总价(不含运费):<span class="loy">0.0</span>
+					总数量<span class="sumnum">0</span>
+					<a href="#">结算</a>
+		        </div>
+		    </div>
+		</div>
+		<script src="../js/jq.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var carlist=JSON.parse(localStorage.getItem("shopcart"))
+			carlist.forEach(function(item,index){
+				$(".tr1").after(`
+					<tr class="tr2 tr3">
+						<td><input class="checksin" type="checkbox" name="choose"></td>
+						<td><img src="${item.img}" alt="" style="width:50px"></td>
+						<td><a href="./detail.html?yousb=${item.id}">${item.shopName}</a></td>
+						<td class="price">${item.price}</td>
+						<td>
+							<button class="a2 plus">+</button>
+							  <a class="a1 numchange">${item.num}</a>
+							<button class="a2 sub">-</button>
+						</td>
+						<td class = "zje">${item.price}</td>
+						<td class = "shanc">删除</td>
+					</tr>
+				`)
+			})
+			//加功能
+			 $(".plus").click(function(){
+				 var numG=parseInt($(this).next().html())+1;
+				 if(numG<11){
+					 $(this).next().html(numG);
+					 var Dprice=+$(this).parent().prev().html();
+					 $(this).parent().next().html((numG*Dprice).toFixed(1))
+				 }
+				 result()
+			 })
+			 // 减功能
+			 $(".sub").click(function(){
+				 var numG=parseInt($(this).prev().html())-1;
+				 if(numG>0){
+					 $(this).prev().html(numG);
+					 var Dprice=+$(this).parent().prev().html();
+					 $(this).parent().next().html((numG*Dprice).toFixed(1))
+				 }
+				 result()
+			 })
+			 // 全选
+			 $(".checkall").on("click",function(){
+				var flag=$(this)[0].checked;
+				// console.log(flag)
+				$(".checksin").each(function(){
+					$(this)[0].checked=flag;
+				})
+				result()
+			 })
+			 // 单个选择
+			 $(".checksin").on("click",function(){
+				  var i=0;
+				  $(".checksin").each(function(){
+					  if($(this)[0].checked==false){
+						  $(".checkall")[0].checked=false;
+					  }else{
+						  i+=1;
+						  if(i==$(".checksin").length){
+							   $(".checkall")[0].checked=true;
+						  }
+					  }
+				  })
+				  result()
+			 })
+			 // 公共数据函数
+			function result(){
+				var allprice=0;
+				var allnum=0;
+				$(".tr2").each(function(){
+					if($(this).find(".checksin")[0].checked==true){
+						allprice+=+$(this).find(".zje").html();
+						allnum+=parseInt($(this).find(".numchange").html()); 
+					}else{
+						allprice+=0;
+						allnum+=0
+					}
+				})
+				$(".loy").html(allprice.toFixed(1))
+				$(".sumnum").html(allnum)
+			}
+		</script>
+	</body>
+</html>

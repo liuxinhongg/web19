@@ -24,23 +24,15 @@
 	</head>
 	<body>
 		<!-- 我是商品分类查询 -->
-		<p class="op">
-			<input type="text" value="" id="shop"/>
-			<input type="button" id="btn" value="搜索"/>
-		</p>
 		<div class="container">
-			<div class="row item">
+			<div class="item">
 				
 			</div>
 		</div>
 		<script src="../js/jq.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-		console.log(document.cookie.split("=")[1])
-			// console.log(location.search)
-			/* 汉字转码:encodeURIComponent()
-			码转汉字:decodeURI() */
 			var str=location.search;
-			str=decodeURI(str.split("=")[1]);
+			str=str.split("=")[1];
 			console.log(str)
 			if(str=="undefined"){
 				$(".item").html("暂无数据")
@@ -56,32 +48,43 @@
 			})
 			function getdata(){
 				$.ajax({
-					url:"http://127.0.0.1/w/website/findGoodsList",
+					url:"http://127.0.0.1/w/website/findGoodsDetail",
 					type:"get",
 					data:{
 						info:str,
-						pageNo:1
 					},
 					success:function(res){
 						console.log(res)
-						var aa="";
-						var datalist=res.data.tbk_dg_material_optional_response.result_list.map_data;
-						for (var i=0;i<datalist.length;i++) {
-							var item=datalist[i];
-							aa+=`<div class="col-md-3">
-										<img src="${item.pict_url}" width="100%">
-										<h4>${item.category_name}</h4>
-										<p>${item.coupon_info}</p>
-										<div class="desc">
-											<a href="${item.coupon_share_url}">领取优惠卷</a>
-											<a href="${item.url}">详情</a>
-										</div>
-									</div>`
-						}
-							$(".item").html(aa)
+						var datalist=res.data.detail.tbk_item_info_get_response.results.n_tbk_item[0];
+							// var item=datalist[i];
+						$(".item").html(`<div class="col-md-3">
+							<img src="${datalist.pict_url}" width="200">
+							<h4>${datalist.cat_leaf_name}</h4>
+							<p>${datalist.kuadian_promotion_info}</p>
+							<p>${datalist.zk_final_price}</p>
+							<div class="desc">
+								<a href="#">立即购买</a>
+								<h3 class="addCart">加入购物车</h3>	
+							</div>
+						</div>`)
+						$(".addCart").click(function(){
+							var shuzu = JSON.parse(localStorage.getItem("shopcart"))||[];
+							var shopObj={
+								img:datalist.pict_url,
+								shopName:datalist.cat_name,
+								shopId:str,
+								price:datalist.zk_final_price,
+								num:1,
+								state:false
+							}
+							shuzu.push(shopObj)
+							localStorage.setItem("shopcart",JSON.stringify(shuzu))
+							location.href = "./cart.html";
+						})
 					}
 				})
 			}
+			
 		</script>
 	</body>
 </html>
