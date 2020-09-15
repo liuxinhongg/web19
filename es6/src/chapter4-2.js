@@ -65,3 +65,34 @@
 	let resultflat = listF.flat(2);
 	console.log(resultflat);//[1, 2, "2nd", 3, 4, "3th", 5, 6]
 }
+// filter
+// 数组去重
+{
+	let arr=[1,2,3,4,1,2,4,6,8,6,4,9,5,2];
+	let result=arr.filter(function(i,index,item){
+		
+		/* i 数组每一项的值
+		index 每一项的下标
+		item 当前的数组 */
+		return item.indexOf(i)===index;
+	})
+	console.log(result);
+}
+{
+	let arr=[1,2,3,4,5,6];
+	let result=arr.filter(function(item){
+		return item=item>4
+	})
+	console.log(result);
+}
+{
+	let arr=[
+		{name:"zs",age:18},
+		{name:"ls",age:20},
+		{name:"zs",age:19},
+	];
+	let result = arr.filter(function(item){
+		return item=item.name=='zs';
+	})
+	console.log(result);
+}

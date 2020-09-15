@@ -71,3 +71,30 @@
 	var resultflat = listF.flat(2);
 	console.log(resultflat); //[1, 2, "2nd", 3, 4, "3th", 5, 6]
 }
+// filter
+// 数组去重
+{
+	var arr = [1, 2, 3, 4, 1, 2, 4, 6, 8, 6, 4, 9, 5, 2];
+	var _result3 = arr.filter(function (i, index, item) {
+
+		/* i 数组每一项的值
+  index 每一项的下标
+  item 当前的数组 */
+		return item.indexOf(i) === index;
+	});
+	console.log(_result3);
+}
+{
+	var _arr = [1, 2, 3, 4, 5, 6];
+	var _result4 = _arr.filter(function (item) {
+		return item = item > 4;
+	});
+	console.log(_result4);
+}
+{
+	var _arr2 = [{ name: "zs", age: 18 }, { name: "ls", age: 20 }, { name: "zs", age: 19 }];
+	var _result5 = _arr2.filter(function (item) {
+		return item = item.name == 'zs';
+	});
+	console.log(_result5);
+}
