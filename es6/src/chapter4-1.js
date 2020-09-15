@@ -42,3 +42,10 @@
 	str=str.padEnd(1,"zyy");
 	console.log(str);//swbzyyzyyz
 }
+// 模板字符串  ` ${变量} `
+{
+	let name="zhangsan";
+	let age=19;
+	document.write( '我叫'+name+',我今年'+age+'岁了');
+	document.write(`我叫${name},我今年${age}岁了`);
+}
