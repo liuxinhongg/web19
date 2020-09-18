@@ -120,13 +120,13 @@
 				str=$(this).html()
 				getdata(str)
 			})
-			function getdata(name,page=1){
+			function getdata(name,page){
 				$.ajax({
 					url:"http://127.0.0.1/w/website/findGoodsList",
 					type:"get",
 					data:{
 						info:name,
-						pageNo:page
+						pageNo:page || 1
 					},
 					success:function(res){
 						console.log(res)

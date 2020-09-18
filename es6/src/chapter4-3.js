@@ -35,6 +35,20 @@
 	console.log(result);//{z: 5, s: 5, a: 2, d: 1, l: 2}
 }
 {
+	let names = ['tom', 'jim', 'jack', 'tom', 'jack'];
+	const countNames = names.reduce((allNames, name) => {
+	 if (name in allNames) {
+	  allNames[name] ++;
+	 }
+	 else {
+	  allNames[name] = 1;
+	 }
+	 return allNames;
+	}, {});
+	 
+	console.log(countNames) // { tom: 2, jim: 1, jack: 2 }
+}
+{
 	// 展开数组
 	const list=[1,['2nd',2,3,['3rd',4,5]],['2nd',6,7]];
 	const deepFlat=function(list){
