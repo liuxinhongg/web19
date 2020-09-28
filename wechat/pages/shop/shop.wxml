@@ -1,2 +1,21 @@
 <!--pages/shop/shop.wxml-->
-<text>pages/shop/shop.wxml</text>
+
+<view class="page-section page-section-spacing swiper">
+  <swiper indicator-dots="true"  autoplay="true" interval="1000" duration="500">
+    <block wx:for="{{bannerList}}" wx:key="*this" wx:for-item="bann">
+      <swiper-item>
+        <image src="{{bann.img}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<canvas style="width:600rpx;height:400rpx" canvas-id="canvas"></canvas>
+<canvas style="width:200rpx;height:200rpx" canvas-id="canvasSquare"></canvas>
+ <icon class="icon-box-img" type="success" size="93"></icon>
+ <icon class="icon-box-img" type="info" size="73" color="yellowgreen"></icon>
+ <icon class="icon-box-img" type="cancel" size="23"></icon>
+ <rich-text nodes="{{nodehtml}}"></rich-text>
+ <progress percent="{{jdt}}" stroke-width="20" border-radius="5" font-size="14" activeColor="red" backgroundColor="aqua" active="true"/><icon class="progress-cancel" type="cancel"></icon>
+<!-- <view></view> -->
+<map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" markers="{{markers}}" show-location style="width: 100%; height: 300px;"></map>
