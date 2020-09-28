@@ -1,0 +1,7 @@
+<template name="msgItem">
+  <view>
+  <!-- text：span -->
+    <text> 编号{{index}}: {{msg}} </text>
+    <text> 时间: {{time}} </text>
+  </view>
+</template>

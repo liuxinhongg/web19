@@ -5,7 +5,7 @@
 		<title></title>
 	</head>
 	<body>
-		<form action="/users/login" method="post">
+		<form >
 			<p>
 				<label>用户名：</label>
 				<input type="text" name="username"/>
@@ -18,7 +18,35 @@
 				<input type="checkbox" id="aa"/>
 				<label for="aa">我已阅读啥可货到付款是的回复快点</label>
 			</p>
-			<input type="submit" value="登录"/>
+			<input type="button" value="登录" id="btn"/>
 		</form>
+		<script src="./javascripts/jq.min.js"></script>
+		<script type="text/javascript">
+			$("#btn").click(function(){
+				// console.log(11);
+				$.ajax({
+					url:"http://localhost:3000/page/login",
+					type:"post",
+					data:{
+						username:$("input").eq(0).val(),
+						password:$("input").eq(1).val(),
+					},
+					success:function(res){
+						console.log(res)
+						if(res.code===0){
+							Cookie.set('token',res.token)
+						}
+					}
+				})
+			})
+			// 下一个js
+			// 再其他页面要判断token是否过期
+			var tto=Cookie.get('token');
+			if(tto){
+				console.log("用户登录正常，请继续开发")
+			}else{
+				console.log("token失效")
+			}
+		</script>
 	</body>
 </html>

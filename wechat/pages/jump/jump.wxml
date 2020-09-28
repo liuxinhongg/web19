@@ -1,0 +1,3 @@
+<!--pages/jump/jump.wxml-->
+<text>pages/jump/jump.wxml</text>
+<navigator url="../shop/shop" open-type="switchTab">我要去shapTab</navigator>

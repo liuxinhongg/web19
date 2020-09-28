@@ -1,0 +1,41 @@
+{
+  "pages":[
+    "pages/logs/logs",
+    "pages/shop/shop",
+    "pages/index/index",
+    "pages/template/template",
+    "pages/jump/jump"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#f00",
+    "navigationBarTitleText": "首页",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar":{
+    "color":"#000",
+    "selectedColor":"#f00",
+    "list":[
+      {
+        "pagePath": "pages/logs/logs",
+        "text":"日志",
+        "iconPath":"./images/log.png",
+        "selectedIconPath":"./images/log-active.png"
+      },
+      {
+        "pagePath":"pages/shop/shop",
+        "text":"商品",
+        "iconPath":"./images/home.png",
+        "selectedIconPath":"./images/home-active.png"
+      },
+      {
+        "pagePath":"pages/index/index",
+        "text":"个人中心",
+        "iconPath":"./images/home.png",
+        "selectedIconPath":"./images/home-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

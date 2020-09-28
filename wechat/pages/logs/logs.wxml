@@ -1,0 +1,64 @@
+<!-- div p ...块级元素 -->
+<view>
+{{news}}
+</view>
+<view>
+  <view wx:for="{{listdata}}" wx:key="index">{{index}}{{item.name}}</view>
+  <view>---------</view>
+  <view wx:for="{{listdata}}" wx:for-item="aa" wx:for-index="idx" wx:key="idx">{{idx}}{{aa.name}}</view>
+</view>
+<view wx:if="{{num>10}}">大于10</view>
+<view wx:elif="{{num<10}}">小于10</view>
+<view wx:else>等于10</view>
+<import src="../template/template"/>
+<template is="msgItem" data="{{...item}}"/> 
+<image src="../../images/catt0.jpg" class="tu"></image>
+<view>-----------------------------------------------------------</view>
+<view class="page-section">
+    <view class="page-section-title first">movable-view区域小于movable-area</view>
+    <movable-area>
+      <movable-view x="{{x}}" y="{{y}}" direction="all" class="box">text</movable-view>
+    </movable-area>
+     <button type="primary" bindtap="move" >移动</button>
+  </view>
+  <view>-----------------------------------------</view>
+  <view class="page-section-spacing">
+    <scroll-view scroll-x="true" style="height: 300rpx;" >
+      <view id="demo1" class="scroll-view-item demo-text-1">A</view>
+      <view id="demo2"  class="scroll-view-item demo-text-2">B</view>
+      <view id="demo3" class="scroll-view-item demo-text-3">C</view>
+    </scroll-view>
+  </view>
+  <view class="page-section-spacing">
+  <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
+    <view id="demo1" class="scroll-view-item_H demo-text-1">AAA</view>
+    <view id="demo2"  class="scroll-view-item_H demo-text-2">BBB</view>
+    <view id="demo3" class="scroll-view-item_H demo-text-3">CCC</view>
+  </scroll-view>
+</view>
+<view class="page-section page-section-spacing swiper">
+  <swiper indicator-dots="true" autoplay="true" interval="1000" duration="500">
+    <block>
+      <swiper-item>
+       <image src="../../images/cat1.jpg"></image>
+      </swiper-item>
+       <swiper-item>
+       <image src="../../images/catt0.jpg"></image>
+      </swiper-item>
+       <swiper-item>
+       <image src="../../images/cdat0.jpg"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view>---------------------------------------------</view>
+<view class="aa" data-name="我是谁？" catchtap="btn">我是谁？</view>
+<!-- <navigator url="../jump/jump">我要去jump页面</navigator> -->
+<!-- <navigator url="../shop/shop" open-type="redirect">我要去jump页面</navigator> -->
+
+<!-- <navigator url="../jump/jump" open-type="reLaunch">我要去jump页面</navigator> -->
+<!-- <navigator url="../shop/shop" open-type="reLaunch">我要去jump页面</navigator> -->
+
+<!-- <navigator url="../shop/shop" open-type="switchTab">我要去shop页面</navigator> -->
+<input type="text" placeholder="这是一个密码输入框" class="oinput" bindblur="getdata"/>
+<button type="primary" size="mini" bindtap="sousuo">搜索</button>

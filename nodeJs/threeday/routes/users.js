@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var db = require("../db");
+// var db = require("../db");
 var usercallback=require("../cbfile/userCb")
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');

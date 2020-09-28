@@ -1,5 +1,5 @@
 var userC = require("../config/sqlConfig")
-class UserCallB = {
+class UserCallB {
 	zhuceUser(req, res, next) {
 		console.log(req.query); //{ username: 'aa', password: '123456', age: '18' }
 		// 关联数据库

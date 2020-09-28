@@ -11,12 +11,12 @@ exports.query = function(sql,arr,callback){
 	// 建立链接
 	pool.getConnection(function(err,connection){
 		if(err) {throw err;return}
-		connection.query(sql,arr,function(error,results,fileds){
+		connection.query(sql,arr,function(error,results){
 			//将链接返回到连接池，让其他人重复使用
 			connection.release()
 			if(error) throw error;
 			// 执行回调函数，将数据返回
-			callback && callback(results,fileds)
+			callback && callback(results)
 		})
 	})
 }
