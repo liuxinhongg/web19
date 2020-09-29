@@ -42,3 +42,31 @@ movable-area{
   margin: 40rpx auto;
   border: 2rpx solid red;
 }
+.page-section-spacing{
+  margin-top: 60rpx;
+}
+.scroll_H{
+  white-space: nowrap;
+}
+.scroll-view-item{
+  height: 300rpx;
+}
+.sortBanner{
+  display: inline-block;
+  width: 120rpx;
+  height: 170rpx;
+}
+.active{
+  color: red;
+}
+.tu{
+  width: 120rpx;
+  height: 120rpx;
+  display: block;
+}
+.title{
+  width: 100%;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+}

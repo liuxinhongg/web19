@@ -25,12 +25,35 @@ Page({
         height: 20
       }
     ],
-    bannerList:[]
+    bannerList:[],
+    sortList:[],
+    neirong:''||'配饰',
+    status:0
+  },
+  changTap(e){
+    // console.log(e)
+    this.setData({
+      neirong:e.currentTarget.dataset.name,
+      status:e.currentTarget.dataset.id
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.request({
+      url: 'https://www.wumeili.top/w/website/findGoodsTypeList',
+      method:"GET",
+      success:res=>{
+        console.log(res);
+        this.setData({
+          sortList:res.data.data
+        })
+        if(res.data.status==="0"){
+          wx.hideToast()
+        }
+      }
+    })
     wx.request({
       url: 'https://www.wumeili.top/w/website/bannerList',
       method:"GET",

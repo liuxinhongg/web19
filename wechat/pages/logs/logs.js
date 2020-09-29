@@ -21,6 +21,16 @@ Page({
     y:0,
     toView:"green",
     InputVal:"",
+    sortList:[],
+    status:0,
+    content:""||"配饰"
+  },
+  changeTap(e){
+    console.log(e)
+    this.setData({
+      status:e.currentTarget.dataset.id,
+      content:e.currentTarget.dataset.name
+    })
   },
   move(){
     // console.log(this.data.x);
@@ -60,7 +70,38 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    // wx.showModal({
+    //   title: '提示',
+    //   content: '这是一个模态弹窗',
+    //   success (res) {
+    //     if (res.confirm) {
+    //       console.log('用户点击确定')
+    //     } else if (res.cancel) {
+    //       console.log('用户点击取消')
+    //     }
+    //   }
+    // })
+    // wx.showLoading({
+    //   title: '加载中',
+    // })
+    wx.showToast({
+      title: '加载中...',
+      icon: 'loading',
+      duration: 5000
+    })
+    wx.request({
+      url: 'https://www.wumeili.top/w/website/findGoodsTypeList',
+      method:"GET",
+      success:res=>{
+        console.log(res);
+        this.setData({
+          sortList:res.data.data
+        })
+        if(res.data.status==="0"){
+          wx.hideToast()
+        }
+      }
+    })
   },
 
   /**

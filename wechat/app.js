@@ -9,16 +9,32 @@ App({
     // 登录
     wx.login({
       success: res => {
+        // console.log(res);
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        wx.request({
+          url: 'https://api.weixin.qq.com/sns/jscode2session',
+          method:'GET',
+          data:{
+            appid:"wxab04447bb0e29e25",
+            secret:"345b63d7036e4cd0799a6bb62193ffcb",
+            js_code:res.code,
+            grant_type:"authorization_code"
+          },
+          success:res=>{
+            // console.log(res);
+          }
+        })
       }
     })
     // 获取用户信息
     wx.getSetting({
       success: res => {
+        // console.log(res)
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
+            console.log(res)
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
 

@@ -51,8 +51,8 @@
     </block>
   </swiper>
 </view>
-<view>---------------------------------------------</view>
-<view class="aa" data-name="我是谁？" catchtap="btn">我是谁？</view>
+<!-- <view>---------------------------------------------</view>
+<view class="aa" data-name="我是谁？" catchtap="btn">我是谁？</view> -->
 <!-- <navigator url="../jump/jump">我要去jump页面</navigator> -->
 <!-- <navigator url="../shop/shop" open-type="redirect">我要去jump页面</navigator> -->
 
@@ -60,5 +60,15 @@
 <!-- <navigator url="../shop/shop" open-type="reLaunch">我要去jump页面</navigator> -->
 
 <!-- <navigator url="../shop/shop" open-type="switchTab">我要去shop页面</navigator> -->
-<input type="text" placeholder="这是一个密码输入框" class="oinput" bindblur="getdata"/>
-<button type="primary" size="mini" bindtap="sousuo">搜索</button>
+<!-- <input type="text" placeholder="这是一个密码输入框" class="oinput" bindblur="getdata"/>
+<button type="primary" size="mini" bindtap="sousuo">搜索</button> -->
+
+<view class="page-section-spacing">
+  <scroll-view class="scroll_H" scroll-x="true" style="width: 100%">
+    <view class="sortBanner {{status == index ? 'active' : ''}}" wx:for="{{sortList}}" bindtap="changeTap" data-id="{{index}}" data-name="{{item.name}}">
+      <image src="{{item.icon}}" class="tu"></image>
+      <text class="title" >{{item.name}}</text>
+    </view>
+  </scroll-view>
+	<view class="navbottom">{{content}}</view>
+</view>

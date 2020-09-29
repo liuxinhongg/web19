@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "swiperImg":"../../component/swiper/swiper"
+  },
   "navigationBarTitleText":"商品",
   "navigationBarBackgroundColor":"#0ff",
   "navigationBarTextStyle":"black"
