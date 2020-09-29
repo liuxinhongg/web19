@@ -7,9 +7,9 @@ Component({
       type:Array,
       value:[],
       observers:{
-        ImageList:(res)=>{
+        ImageList:(newVal)=>{
           this.setData({
-            ImageList :res
+            ImageList :newVal
           })
         }
       }

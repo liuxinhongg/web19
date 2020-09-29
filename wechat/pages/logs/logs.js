@@ -93,7 +93,7 @@ Page({
       url: 'https://www.wumeili.top/w/website/findGoodsTypeList',
       method:"GET",
       success:res=>{
-        console.log(res);
+        // console.log(res);
         this.setData({
           sortList:res.data.data
         })

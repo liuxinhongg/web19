@@ -1,3 +1,12 @@
-<!--pages/jump/jump.wxml-->
-<text>pages/jump/jump.wxml</text>
-<navigator url="../shop/shop" open-type="switchTab">我要去shapTab</navigator>
+
+<view class="topBox">
+  <input type="text" bindblur="sj" class="oInput"/>
+  <button type="primary" size="mini" bindtap="sousuo" class="sousuo">搜索</button>
+</view>
+
+<view class="box">
+	<view class="item" wx:for="{{goodsList}}">
+		<image src="{{item.pict_url}}" class="tuP"></image>
+		<text class="title">{{item.category_name}}</text>
+	</view>
+</view>

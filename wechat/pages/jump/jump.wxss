@@ -1,1 +1,40 @@
 /* pages/jump/jump.wxss */
+.box{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.item{
+  width: 300rpx;
+  height: 500rpx;
+  border: 2rpx solid #ccc;
+  margin: 10rpx;
+}
+.tuP{
+  width: 100%;
+  height: 450rpx;
+}
+.title{
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  line-height: 50rpx;
+}
+.topBox{
+  width: 600rpx;
+  height: 80rpx;
+  margin: 20rpx auto;
+  display: flex;
+  justify-content: flex-start;
+}
+.oInput{
+  flex: 1;
+  height: 80rpx;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.sousuo{
+  width: 100rpx;
+  height: 80rpx;
+}

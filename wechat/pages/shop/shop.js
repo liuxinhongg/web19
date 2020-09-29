@@ -1,4 +1,6 @@
 // pages/shop/shop.js
+// const aa = require("../../utils/apiConfig");
+import aa from "../../utils/apiConfig"
 Page({
 
   /**
@@ -36,11 +38,23 @@ Page({
       neirong:e.currentTarget.dataset.name,
       status:e.currentTarget.dataset.id
     })
+    wx.navigateTo({
+      url: '../jump/jump?name='+e.currentTarget.dataset.name,
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    aa.get("/w/website/findGoodsTypeList",{},res=>{
+      this.setData({
+        sortList:res.data.data
+      })
+      if(res.data.status==="0"){
+        wx.hideToast()
+      }
+    })
+    /*
     wx.request({
       url: 'https://www.wumeili.top/w/website/findGoodsTypeList',
       method:"GET",
@@ -53,7 +67,20 @@ Page({
           wx.hideToast()
         }
       }
+    })*/
+    // 轮播图
+    /*
+    aa.get("/w/website/bannerList",{},res=>{
+      this.setData({
+        bannerList:res.data.data
+      })
+    })*/
+    aa.get("/w/website/bannerList",{}).then(res=>{
+      this.setData({
+        bannerList:res.data.data
+      })
     })
+    /*
     wx.request({
       url: 'https://www.wumeili.top/w/website/bannerList',
       method:"GET",
@@ -64,7 +91,7 @@ Page({
           bannerList:res.data.data
         })
       }
-    })
+    })*/
 
 
 
@@ -139,9 +166,24 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.getImageInfo({
+      src: '../../images/cat1.jpg',
+      success (res) {
+        console.log(res)
+      }
+    })
   },
-
+  chooseImage(){
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success (res) {
+        // tempFilePath可以作为img标签的src属性显示图片
+        console.log(res);
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

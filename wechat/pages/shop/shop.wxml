@@ -19,6 +19,7 @@
 	</scroll-view>
 </view>
 <view>{{neirong}}</view>
+<button bindtap="chooseImage">选择图片</button>
 <canvas style="width:600rpx;height:400rpx" canvas-id="canvas"></canvas>
 <canvas style="width:200rpx;height:200rpx" canvas-id="canvasSquare"></canvas>
 <icon class="icon-box-img" type="success" size="93"></icon>

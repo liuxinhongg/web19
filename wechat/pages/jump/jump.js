@@ -5,16 +5,45 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    goodsList:[],
+    page:1,
+    name:'',
   },
-
+  sj(e){
+    console.log(e.detail.value);
+    this.setData({
+      name:e.detail.value
+    })
+  },
+  sousuo(){
+    this.getdata(this.data.name,this.data.page)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      name:options.name
+    })
     console.log(options);
+    this.getdata(this.data.name,this.data.page)
   },
-
+  getdata(aa,num){
+    wx.request({
+      url: 'https://www.wumeili.top/w/website/findGoodsList',
+      data:{
+        info:aa,
+        pageNo :num
+      },
+      method:"GET",
+      success:res=>{
+        console.log(res);
+        this.setData({
+          goodsList:res.data.data.tbk_dg_material_optional_response.result_list.map_data
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -54,7 +83,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.data.page++;
+    console.log(this.data.page)
+    this.getdata(this.data.name,this.data.page)
   },
 
   /**
