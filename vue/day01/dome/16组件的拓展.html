@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{title}}
+			<hello-world></hello-world>
+			<hello-world></hello-world>
+			<hello-world></hello-world>
+			<hello-world></hello-world>
+			<hello-world></hello-world>
+			<hello-world></hello-world>
+		</div>
+		<template id="box">
+			<div>
+				<h1 @click="change()">{{title}}</h1>
+				<ul>
+					<li v-for="(tm,index) in datalist" :key="index">
+						<img :src="tm.imgurl" width="50">
+						<b>{{tm.name}}</b>
+					</li>
+				</ul>
+			</div>
+		</template>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					title:"标题"
+				},
+				components:{
+					"helloWorld":{
+						template:"#box",
+						data(){
+							return {
+								title:'我是标题',
+								datalist:[
+									{
+										name:"星期一星期一星期一",
+										imgurl:"../images/t1.jpg"
+									},
+									{
+										name:"星期22星期22星期22",
+										imgurl:"../images/t2.jpg"
+									},
+									{
+										name:"星期33期33星期33",
+										imgurl:"../images/t3.jpg"
+									},
+									{
+										name:"星期44星期44星期44",
+										imgurl:"../images/t1.jpg"
+									}
+								]
+							}
+						},
+						methods:{
+							change(){
+								this.title="我是谁？我在哪~"
+							}
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

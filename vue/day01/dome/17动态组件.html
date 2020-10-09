@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="button" value="hello组件" @click="title='hello'"/>
+			<input type="button" value="world组件" @click="title='world'"/>
+			<keep-alive>
+				<component :is="title"></component>
+			</keep-alive>
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					title:"hello"
+				},
+				components:{
+					'hello':{
+						template:`<div> <h1>我是hello组件</h1> </div>`
+					},
+					'world':{
+						template: `<div> <h1>我是world组件</h1> </div>`
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
