@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			[v-cloak] {
+			  display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- v-cloak用来解决屏幕闪动的问题 -->
+		<div id="app">
+			<h1 v-cloak>{{inputVal}}</h1>
+			<!-- <h1 v-pre>{{inputVal}}</h1> -->
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					inputVal:"今天阴天有点冷~",
+				}
+			})
+		</script>
+	</body>
+</html>

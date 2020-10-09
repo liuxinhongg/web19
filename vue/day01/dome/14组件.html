@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<hello-world>
+				<div>1111111111111111111111111</div>
+				<h1>
+					<font>我是组件的内容</font>
+				</h1>
+			</hello-world>
+			<div>手动阀打发打发打发打发打发打发打发打发</div>
+		</div>
+		<template id="box">
+			<div>
+				<p>我是模板的开始位置</p>
+				<!-- 插槽 -->
+				<slot></slot>
+				<p>我是模板的结束位置</p>
+			</div>
+		</template>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					news:"卡萨丁恢复健康"
+				},
+				components:{
+					"helloWorld":{
+						template:"#box"
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
