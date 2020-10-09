@@ -1,0 +1,12 @@
+<!-- <bannerImg sHeight="300rpx" ImageList="{{topBanner}}" url=" "></bannerImg> -->
+<button bindtap="address">收货地址</button>
+<view wx:for="{{shopDe}}" wx:key="index">
+<image src="{{item.pict_url}}"></image>
+<view>{{item.title}}</view>
+<view>{{item.cat_leaf_name}}</view>
+<view>{{item.item}}</view>
+</view>
+<view wx:for="{{topBanner}}">
+  <image src="{{item}}"></image>
+</view>
+

@@ -4,7 +4,9 @@
     "pages/shop/shop",
     "pages/index/index",
     "pages/template/template",
-    "pages/jump/jump"
+    "pages/jump/jump",
+    "pages/sou/sou",
+    "pages/shopDetail/shopDetail"
   ],
   "window":{
     "backgroundTextStyle":"light",

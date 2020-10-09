@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{news}}
+			 <!-- v-text不解析标签 -->
+			<div v-text="news"></div>
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					news:'<h1>啦速度放缓看来是</h1>'
+				}
+			})
+		</script>
+	</body>
+</html>

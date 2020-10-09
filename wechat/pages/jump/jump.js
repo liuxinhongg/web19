@@ -10,9 +10,17 @@ Page({
     name:'',
   },
   sj(e){
-    console.log(e.detail.value);
-    this.setData({
-      name:e.detail.value
+    wx.navigateTo({
+      url: '../sou/sou',
+    })
+    // console.log(e.detail.value);
+    // this.setData({
+    //   name:e.detail.value
+    // })
+  },
+  jumpDetil(e){
+    wx.navigateTo({
+      url: '../shopDetail/shopDetail?id='+e.currentTarget.dataset.id,
     })
   },
   sousuo(){

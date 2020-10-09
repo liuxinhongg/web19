@@ -46,7 +46,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    /*
     aa.get("/w/website/findGoodsTypeList",{},res=>{
+      this.setData({
+        sortList:res.data.data
+      })
+      if(res.data.status==="0"){
+        wx.hideToast()
+      }
+    })*/
+    aa.get("/w/website/findGoodsTypeList",{}).then(res=>{
       this.setData({
         sortList:res.data.data
       })
@@ -166,6 +175,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.getImageInfo({
+      src:"../../images/cdat0.jpg",
+      success:res=>{
+        console.log(res)
+      }
+    })
     wx.getImageInfo({
       src: '../../images/cat1.jpg',
       success (res) {

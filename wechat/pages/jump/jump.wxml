@@ -1,11 +1,11 @@
 
 <view class="topBox">
-  <input type="text" bindblur="sj" class="oInput"/>
+  <input type="text" bindfocus="sj" class="oInput"/>
   <button type="primary" size="mini" bindtap="sousuo" class="sousuo">搜索</button>
 </view>
 
 <view class="box">
-	<view class="item" wx:for="{{goodsList}}">
+	<view class="item" wx:for="{{goodsList}}" wx:key="index" bindtap="jumpDetil" data-id="{{item.item_id}}">
 		<image src="{{item.pict_url}}" class="tuP"></image>
 		<text class="title">{{item.category_name}}</text>
 	</view>
