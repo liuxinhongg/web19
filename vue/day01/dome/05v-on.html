@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="button" name="" id="" value="加" v-on:click="add()"/>
+			{{num}}
+			<input type="button" name="" id="" value="减" @click="jian()"/>
+			<input type="button" name="" id="" value="右点击" @click.once="rightone()"/>
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					num:1
+				},
+				methods:{
+					add(){
+						this.num++;
+						// console.log("我是加函数")
+					},
+					jian(){
+						this.num--;
+					},
+					rightone(){
+						console.log("鼠标右点击事件")
+						}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div v-if="state">未登录</div>
+			<div v-else>已登录</div>
+			<div v-if=" num>10"> 数字比10大</div>
+			<div v-else-if="num<10"> 数字比10小</div>
+			<!-- <div v-if="num==10"> 数字和10一样大</div> -->
+			<div v-else> 数字和10一样大</div>
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					state:true,
+					num:15
+				}
+			})
+		</script>
+	</body>
+</html>

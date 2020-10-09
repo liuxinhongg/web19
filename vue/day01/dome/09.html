@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="aa in linkList">
+					<!-- <a v-bind:href="aa.url">{{aa.name}}我不想呆在v-bind页面</a> -->
+					<img :src="aa.imgurl" width="50">
+					<a :href="aa.url">{{aa.name}}我不想呆在v-bind页面</a>
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					linkList:[
+						{
+							name:"百度",
+							imgurl:"../images/t1.jpg",
+							url:"http://www.baidu.com"
+						},
+						{
+							name:"唯品会",
+							imgurl:"../images/t2.jpg",
+							url:"https://www.vip.com/"
+						},
+						{
+							name:"淘宝",
+							imgurl:"../images/t3.jpg",
+							url:"https://www.taobao.com/"
+						},
+						{
+							name:"360",
+							imgurl:"../images/t1.jpg",
+							url:"https://www.360.cn/"
+						}
+					]
+				}
+				
+			})
+		</script>
+	</body>
+</html>

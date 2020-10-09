@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<!-- <li v-for="item in pome">{{item}}</li> -->
+				<!-- <li v-for="(item,index) in pome" :key="index">{{item}}</li> -->
+				<li v-for="(item,index) in pome" :key="index">{{item.name}}</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					// pome:['锄禾日当午','汗滴禾下土','谁知盘中餐','粒粒皆辛苦']
+					pome:[
+						{
+							name:"锄禾日当午"
+						},
+						{
+							name:"汗滴禾下土"
+						},
+						{
+							name:"谁知盘中餐"
+						},
+						{
+							name:"粒粒皆辛苦"
+						},
+					]
+				}
+			})
+		</script>
+	</body>
+</html>
