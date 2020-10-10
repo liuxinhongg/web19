@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<my-child :num="100" msg="sdf" prop-b="123" cust=19 :num1=111 :object="{a:'abc'}" ></my-child>
+		</div>
+		<script type="text/javascript">
+			Vue.component('my-child',{
+				props:{
+					// null任何类型都可以
+					num:Number,
+					// 多种类型
+					propB:[String,Number],
+					// 必填字段
+					msg:{
+						type:String,
+						required:true
+					},
+					num1:{
+						type:Number,
+						default:100
+					},
+					object:{
+						type:Object,
+						default:function(){
+							return { message:'hello' }
+						}
+					},
+					// 自定义校验函数
+					cust:{
+						validator:function(value){
+							return value > 10
+						}
+					}
+				},
+				template:`<div>
+						<p>num:{{num}}</p>
+						<p>propB:{{propB}}</p>
+						<p>msg:{{msg}}</p>
+						<p>num1:{{num1}}</p>
+						<p>object:{{object}}</p>
+						<p>cust:{{cust}}</p>
+					</div>`
+			})
+			new Vue({
+				el:"#app",
+				data:{
+					
+				}
+			})
+		</script>
+	</body>
+</html>

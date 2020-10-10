@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<hello post-title="你好" num="12" author="{a:'abc'}"></hello>
+		</div>
+		<template id="box">
+			<div>
+				<h1>{{postTitle}}</h1>
+				<h1>{{num}}</h1>
+				<h1>{{author}}</h1>
+			</div>
+		</template>
+		<script type="text/javascript">
+			Vue.component("hello",{
+				template:"#box",
+				props:["postTitle","num","author"]
+			})
+			
+			new Vue({
+				el:"#app",
+				data:{}
+			})
+			
+		</script>
+	</body>
+</html>
