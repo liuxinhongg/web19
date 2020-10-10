@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1> <font color="red">{{name}}</font> </h1>
+			<input type="button" name="" id="" value="更新" onclick="change()"/>
+			<input type="button" name="" id="" value="销毁" onclick="destroy()"/>
+			<input type="button" value="点击" id="btn"/>
+		</div>
+		<script type="text/javascript">
+			/* $("#btn").click(function(){
+				alert("我是谁？我在哪？")
+			}) */
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					name:"你好~太阳~"
+				},
+				methods:{},
+				beforeCreate() {
+					alert("实例创建前~");
+				},
+				created() {
+					alert("实例创建完成~");
+					// $("#btn").click(function(){
+					// 	alert("我是谁？我在哪？")
+					// })
+				},
+				beforeMount(){
+					alert("实例挂在之前");
+					/* $("#btn").click(function(){
+						alert("我是谁？我在哪？")
+					}) */
+				},
+				mounted() {
+					alert("实例挂载完成~");
+					 $("#btn").click(function(){
+						alert("我是谁？我在哪？")
+					})  
+				},
+				beforeUpdate() {
+					alert("更新前~")
+				},
+				updated(){
+					alert("更新完成~")
+				},
+				beforeDestroy() {
+					alert("实例销毁前~")
+				},
+				destroyed() {
+					alert("实例销毁完成~")
+				}
+			})
+			function change(){
+				vm.name = "hello~ sun!!"
+			}
+			function destroy(){
+				vm.$destroy()
+			}
+		</script>
+	</body>
+</html>
