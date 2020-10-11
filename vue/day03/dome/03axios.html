@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{},
+				mounted() {
+					this.getdata();
+				},
+				methods:{
+					getdata(){
+						// axios.get(url,参数).then(res=>{})
+						/* */
+						axios.get("http://route.showapi.com/1211-1",{
+							params:{
+								showapi_appid:'46452',
+								count:10,
+								showapi_sign:'c3bc2247155b4219bffb60cac4fd315c'
+							}
+						}).then(res=>{
+							console.log(res)
+						}) 
+						/* axios({
+							url:"http://route.showapi.com/1211-1",
+							methods:"post",
+							data:{
+								showapi_appid:'46452',
+								count:10,
+								showapi_sign:'c3bc2247155b4219bffb60cac4fd315c'
+							}
+						}).then(res=>{
+							console.log(res)
+						}) */
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
