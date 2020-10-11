@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" name="" id="" v-model="oInput" @keyup="getdata()"/>
+			<ul>
+				<li v-for="(item,index) in bdlist" :key="index">{{item}}</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			let vm= new Vue({
+				el:"#app",
+				data:{
+					oInput:'',
+					bdlist:[],
+				},
+				methods:{
+					getdata(){
+						this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",{
+							params:{
+								wd:this.oInput
+							},
+							jsonp:'cb'
+						}).then(res=>{
+							console.log(res);
+							this.bdlist=res.body.s;
+						})
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

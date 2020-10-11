@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
+		<style type="text/css">
+			li{
+				background-color: yellowgreen;
+				margin-bottom: 20px;
+				line-height: 35px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- <input type="button" name="" id="" value="" @click="getlist()"/> -->
+			<ul>
+				<li v-for="(item,index) in datalist" :key="index">
+					<p>中文：{{item.chinese}}</p>
+					<h3>英文：{{item.english}}</h3>
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			let vm= new Vue({
+				el:"#app",
+				data:{
+					datalist:[]
+				},
+				mounted() {
+					this.getlist()
+				},
+				methods:{
+					getlist(){
+						this.$http.get("http://route.showapi.com/1211-1",{
+							params:{
+								// showapi_appid=替换自己的值&count=5&showapi_sign=替换自己的值
+								showapi_appid:'46452',
+								count:10,
+								showapi_sign:'c3bc2247155b4219bffb60cac4fd315c'
+							}
+						}).then(res=>{
+							console.log(res)
+							this.datalist=res.body.showapi_res_body.data
+							
+						})
+						/* this.$http({
+							url:'',
+							data:{},
+							methods:"get"
+						}).then(res=>{
+							console.log(res)
+						}) */
+						/* $.ajax({
+							url:"",
+							type:"get",
+							data:{},
+							success:function(res){
+								console.log(res);
+							}
+						}) */
+						// get请求
+						/* this.$http.get("url",{
+							params:{参数}
+						}).then(res=>{console.log(res)})
+						// post请求
+						this.$http.post("url",{参数}).then(res=>{console.log(res)}) */
+						
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

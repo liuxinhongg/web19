@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div v-red>{{name}}</div>
+			<span v-red>我是自定义指令</span>
+		</div>
+		<script type="text/javascript">
+			/* let vm = new Vue({
+				el:"#app",
+				data:{
+					name:"zhangsan"
+				},
+				components:{},
+				directives:{
+					"red":{
+						bind:function(el){
+							el.style.background="red";
+							el.style.color="white";
+							el.style.fontWeight="bold";
+							el.style.fontSize="28px";
+						}
+					}
+				}
+			}) */
+			Vue.directive('red',{
+				bind:function(el){
+					el.style.background="red";
+					el.style.color="white";
+					el.style.fontWeight="bold";
+					el.style.fontSize="28px";
+				}
+			})
+			new Vue({
+				el:"#app",
+				data:{
+					name:"张三"
+				}
+			})
+		</script>
+	</body>
+</html>
