@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<script type="text/javascript">
-			var str="jin-tian-shi-ge-hao-ri-zi";
+			/* var str="jin-tian-shi-ge-hao-ri-zi";
 			function zhuanhuan(){
 			  var arr=str.split("-");
 			  for(var i=1;i<arr.length;i++){
@@ -19,7 +19,15 @@
 			const p1=new person()
 			console.log(p1  instanceof person)//
 			var str="hello world";
-			console.log(str instanceof String)
+			console.log(str instanceof String) */
+			var arr=[12,33,9,24,5,65,43,87,29,10];
+			var reusult=arr.sort(function(x,y){
+				if(x<y){
+					return -1
+				}
+				return 0
+			})
+			console.log(reusult)
 		</script>
 	</body>
 </html>
