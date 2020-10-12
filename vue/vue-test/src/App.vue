@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <!-- <img src="./assets/logo.png"> -->
    <!-- <a href="#/">hello组件</a>
     <a href="#/first">first组件</a> -->
       <!-- <a href="/">hello组件</a>
       <a href="/first">first组件</a> -->
-      <router-link to="/" exact>hello组件</router-link>
+      <!-- <router-link to="/" exact>hello组件</router-link>
       <router-link to="/first" active-class="mystyle" tag="h3">first组件</router-link>
-      <router-link to="/page">page组件</router-link>
+      <router-link to="/page">page组件</router-link> -->
        <!-- <router-view/> 用来显示页面的内容 -->
     <router-view/>
   </div>
@@ -20,13 +20,9 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+*{
+  padding: 0;
+  margin: 0;
 }
 .router-link-active{
   color: red;

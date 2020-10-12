@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Frist from '@/components/first'
 import page from '@/components/page'
 import work from '@/components/work'
+import main from '@/components/main'
 const User={
   template:` <div><h1>我是父组件{{$route.params.id}}</h1><router-view/></div> `
 }
@@ -38,6 +39,11 @@ export default new Router({
       component:page
     },
     {
+      path:"/main",
+      name:"main",
+      component:main
+    },
+    {
       path:"/work",
       name:"work",
       component:work
@@ -61,7 +67,7 @@ export default new Router({
       path:"*",
       // component:NotFount,
       redirect:(to)=>{
-        console.log(to);
+        // console.log(to);
         if(to.path==='/aaa'){
           return '/page'
         }else if(to.path==='/bbb'){

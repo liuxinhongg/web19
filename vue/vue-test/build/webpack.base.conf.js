@@ -64,6 +64,11 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+      //需要你手动添加，相当于是编译识别sass! 
+         test: /\.scss$/,
+         loaders: ["style", "css", "sass"]		
       }
     ]
   },
