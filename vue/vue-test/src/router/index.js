@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Frist from '@/components/first'
 import page from '@/components/page'
+import register from '@/components/register'
 import work from '@/components/work'
 import main from '@/views/main'
 import sort from '@/views/sort'
@@ -37,6 +38,11 @@ export default new Router({
             path: "/page",
             name: "page",
             component: page
+        },
+        {
+            path: "/zhuce",
+            name: "zhuce",
+            component: register
         },
         {
             path: "/sort",

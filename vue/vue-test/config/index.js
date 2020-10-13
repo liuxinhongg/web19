@@ -19,7 +19,13 @@ module.exports = {
                     "^/api": "https://www.wumeili.top"
                 }
             },
-
+            "/nodeapi": {
+                target: "http://192.168.1.104:3000", //接口域名
+                changOrigin: true, //是否跨域
+                pathRewrite: {
+                    "^/nodeapi": "http://192.168.1.104:3000"
+                }
+            }
         },
 
         // Various Dev Server settings
@@ -29,8 +35,6 @@ module.exports = {
         errorOverlay: true,
         notifyOnErrors: true,
         poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
-
-
         /**
          * Source Maps
          */
