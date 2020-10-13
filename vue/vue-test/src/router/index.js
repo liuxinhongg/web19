@@ -4,7 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Frist from '@/components/first'
 import page from '@/components/page'
 import work from '@/components/work'
-import main from '@/components/main'
+import main from '@/views/main'
 const User={
   template:` <div><h1>我是父组件{{$route.params.id}}</h1><router-view/></div> `
 }
