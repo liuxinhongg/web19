@@ -2,7 +2,6 @@
   <div>
 	  <div class="top_header">
       <img src="../assets/logo.png" width="80px"/>
-      <input type="button" value="登录" class="btn" @click="change()"/>
       <ul class="navTab">
       	<li v-for="(item,index) in datalist" :key="index">{{item.title}}</li>
       </ul>
@@ -19,51 +18,25 @@
     data(){
       return{
         can:"",
-        msg:"我是子组件里面的内容",
-         datalist:[
-          {
-            title:"导航一",
-            id:1
-          },
-          {
-            title:"导航二",
-            id:2
-          },
-          {
-            title:"导航三",
-            id:3
-          },
-          {
-            title:"导航四",
-            id:4
-          },
-          {
-            title:"导航五",
-            id:5
-          },
-        ]
       }
     },
-    // props:{
-    //   datalist:{
-    //     type:Array,
-    //     required:true
-    //   }
-    // },
+    props:{
+      datalist:{
+        type:Array,
+        required:true
+      }
+    },
     mounted(){
-      console.log(this.$route);
+      // console.log(this.$route);
       this.can=this.$route.query.name;
     },
     methods:{
-      change(){
-        console.log(123);
-        this.$emit("msgchange",this.msg)
-      }
+      
     }
   }
 </script>
 
-<style lang="scss">
+<style >
   $yanse:#f00;
   @mixin hunhe {
     width: 100%;
