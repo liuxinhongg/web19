@@ -26,8 +26,7 @@ const router = new Router({
         linkExactActiveClass: "nav",
         routes: [{
                 path: '/',
-                name: 'HelloWorld',
-                component: HelloWorld
+                redirect: "/main"
             },
             {
                 path: "/first/:name",

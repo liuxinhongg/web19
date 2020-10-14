@@ -50,6 +50,7 @@
 </template>
 
 <script>
+import { mapMutations} from "vuex"
 export default {
   data() {
     return {
@@ -72,6 +73,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations([{changeLogin:"changeLogin"}]),
     add(){
         this.dialogFormVisible=true;
     },
@@ -81,10 +83,14 @@ export default {
             password:this.loginform.password,
         }).then(res=>{
             console.log(res);
-            localStorage.setItem("userToken",res.data.token);
             if(res.data.state===0){
-                this.$message.success("登录成功~")
-                this.dialogFormVisible=false;
+              this.$message.success("登录成功~")
+              localStorage.setItem("userToken",res.data.token);
+              this.changeLogin({Authorization:res.data.token})
+
+
+              this.dialogFormVisible=false;
+
             }
         })
     },

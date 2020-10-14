@@ -4,10 +4,13 @@
         <el-button type="success" @click="add(3)">增加</el-button>
         <span>{{num}}</span>
         <el-button type="warning" @click="jian(2)">减少</el-button>
+        {{num2}}
+        <h1>{{news}}</h1>
     </div>
 </template>
 
 <script>
+import { mapState,mapGetters,mapActions} from "vuex"
     export default {
         // data(){
         //     return {
@@ -21,22 +24,40 @@
         // watch:主要是用于监控vue实例的变化，变量必须在data里面声明才可以，
         // watch监控的是一个变量，还可以是一个对象
         computed: {
-            num(){
-                return this.$store.state.num
-            }
+            ...mapState({
+                num(){
+                    return this.$store.state.num
+                },
+                news(){
+                    return this.$store.state.msg
+                }
+            }),
+            ...mapGetters({
+                num2:'count'
+            })
+           
         },
         methods:{
+            ...mapActions({
+                // add:"addAction"
+                aa:"addAction"
+            }),
             add(num){
+                this.aa()
                 // this.num+=5;
                 //提交mutations里面的方法需要通过this.$store.commit("increment")
                 // this.$store.commit("increment",{
                 //     n:num,
                 //     name:"zhangsan"
                 // });
+                /*
                 this.$store.commit("increment",{
                     n:num,
                     name:"zhangsan"
                 });
+                */
+            //    this.$store.dispatch(actions里面的方法)
+            //     this.$store.dispatch("addAction")
             },
             jian(num){
                 // this.num-=5;

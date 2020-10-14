@@ -36,8 +36,8 @@
   }
 </script>
 
-<style >
-  /* $yanse:#f00;
+<style lang="scss">
+  /* */$yanse:#f00;
   @mixin hunhe {
     width: 100%;
     display: flex;
@@ -70,6 +70,6 @@
         }
       }
     }
-	} */
+	} 
 
 </style>
