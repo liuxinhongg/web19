@@ -18,6 +18,7 @@
                 <el-button @click="resetForm('registerForm')">重置</el-button>
             </el-form-item>
         </el-form>
+        <!-- ref="reference" -->
     </div>
 </template>
 
