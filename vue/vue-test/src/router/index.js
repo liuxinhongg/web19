@@ -22,11 +22,18 @@ const NotFount = {
 }
 Vue.use(Router)
 const router = new Router({
-        mode: "history",
+        // mode: "history",
         linkExactActiveClass: "nav",
         routes: [{
                 path: '/',
+                // component:HelloWorld
                 redirect: "/main"
+                    // redirect: "/main"
+            },
+            {
+                path: "/main",
+                name: "main",
+                component: main
             },
             {
                 path: "/first/:name",
@@ -53,11 +60,7 @@ const router = new Router({
                 name: "sort",
                 component: sort
             },
-            {
-                path: "/main",
-                name: "main",
-                component: main
-            },
+
             {
                 path: "/work",
                 name: "work",

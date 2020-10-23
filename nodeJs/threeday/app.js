@@ -27,7 +27,7 @@ app.use(expressJWT({
 	secret: PRIVATE_KEY,
 	algorithms:['HS256']
 }).unless({
-	path: ['/page/register', '/page/login'] //白名单,除了这了写的地址，其他的URL都需要验证
+	path: ['/page/register', '/page/login','/page/upload'] //白名单,除了这了写的地址，其他的URL都需要验证
 }));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

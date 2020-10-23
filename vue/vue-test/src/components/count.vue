@@ -6,6 +6,8 @@
         <el-button type="warning" @click="jian(2)">减少</el-button>
         {{num2}}
         <h1>{{news}}</h1>
+
+        <marquee behavior="scroll" direction="right" scrollamount="100">我是跑马灯标签</marquee>
     </div>
 </template>
 
